@@ -20,29 +20,30 @@
         .big-label {
             font-size: 24px;
             font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .button-container {
-            margin-top: 20px;
+            text-align: center;
         }
 
         .button {
+            display: inline-block;
             padding: 10px 20px;
             font-size: 16px;
             margin: 0 10px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
             cursor: pointer;
         }
 
         .developer-button {
             background-color: #4CAF50;
-            color: white;
-            border: none;
         }
 
         .customer-button {
             background-color: #008CBA;
-            color: white;
-            border: none;
         }
     </style>
 </head>
@@ -50,8 +51,12 @@
 <div class="label-container">
     <div class="big-label">Military Freelancer</div>
     <div class="button-container">
-        <button class="button developer-button">Виконавець</button>
-        <button class="button customer-button">Замовник</button>
+        <a class = "button developer-button">
+            <button type="button">Замовник</button>
+        </a>
+        <a class = "button customer-button" th:href="@{customer/create}">
+            <button type="button">Замовник</button>
+        </a>
     </div>
 </div>
 </body>
