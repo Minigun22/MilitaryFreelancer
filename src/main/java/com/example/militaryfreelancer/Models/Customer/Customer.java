@@ -20,4 +20,16 @@ public class Customer {
     public Customer(){
 
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", gmail='" + gmail + '\'' +
+                ", phone=" + phone +
+                ", vacancyList=" + vacancyList +
+                '}';
+    }
 }
