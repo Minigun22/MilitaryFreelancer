@@ -1,6 +1,6 @@
 package com.example.militaryfreelancer.DAO;
 
-import com.example.militaryfreelancer.Models.Customer;
+import com.example.militaryfreelancer.Models.Customer.Customer;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
