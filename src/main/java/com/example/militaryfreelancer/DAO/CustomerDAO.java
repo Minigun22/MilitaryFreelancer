@@ -8,6 +8,7 @@ import java.util.List;
 
 @Component
 public class CustomerDAO {
+    private static int CUSTOMERS_COUNT;
     private final List<Customer> customerList;
 
     {
@@ -24,5 +25,10 @@ public class CustomerDAO {
                 .filter(customer -> customer.getId() == id)
                 .findAny()
                 .orElse(null);
+    }
+
+    public void registerCustomer(Customer customer){
+        customer.setId(++CUSTOMERS_COUNT);
+        customerList.add(customer);
     }
 }

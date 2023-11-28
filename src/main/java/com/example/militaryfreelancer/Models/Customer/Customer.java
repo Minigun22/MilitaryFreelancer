@@ -14,7 +14,7 @@ public class Customer {
     private String name;
     private String surname;
     private String gmail;
-    private int phone;
+    private String phone;
     private List<Vacancy> vacancyList;
 
     public Customer(){
