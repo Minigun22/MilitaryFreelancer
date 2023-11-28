@@ -25,7 +25,7 @@ public class CustomerController {
     }
 
     @GetMapping("/create")
-    public String getCreateCustomerForm(@ModelAttribute("customer") Customer customer){
+    public String getCreateCustomerForm(){
         return "new";
     }
     @PostMapping()
