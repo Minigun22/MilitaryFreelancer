@@ -13,6 +13,7 @@ public class PerformerDAO {
 
     {
         performerList = new ArrayList<>();
+        performerList.add(new Performer("Vitali", "Datsenko", "@gmail.com", "1234567890"));
     }
 
     public List<Performer> getPerformerList(){
