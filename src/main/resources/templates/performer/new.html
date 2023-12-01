@@ -66,7 +66,7 @@
 <body>
 <div class="registration-form">
     <h2>Реєстрація</h2>
-    <form th:method="POST"  th:action="@{/performer}" th:object="${/performer}">
+    <form th:method="POST"  th:action="@{/performer}" th:object="${performer}">
         <div class="form-group">
             <label for="name">Ім'я:</label>
             <input type="text" th:field="*{name}" id="name" required>
