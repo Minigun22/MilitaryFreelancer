@@ -66,29 +66,25 @@
 <body>
 <div class="registration-form">
     <h2>Реєстрація</h2>
-    <form th:action="@{/}" th:method="post" th:object="${}">
+    <form th:method="POST"  th:action="@{/performer}" th:object="${/performer}">
         <div class="form-group">
             <label for="name">Ім'я:</label>
-            <input type="text" th:field="*{}" id="name" required>
-            <div class="error-container" th:if="${}" th:errors="*{}"></div>
+            <input type="text" th:field="*{name}" id="name" required>
         </div>
 
         <div class="form-group">
             <label for="surname">Прізвище:</label>
-            <input type="text" th:field="*{}" id="surname" required>
-            <div class="error-container" th:if="${}" th:errors="*{}"></div>
+            <input type="text" th:field="*{surname}" id="surname" required>
         </div>
 
         <div class="form-group">
             <label for="email">Електронна пошта:</label>
-            <input type="text" th:field="*{}" id="email" required>
-            <div class="error-container" th:if="${}" th:errors="*{}"></div>
+            <input type="text" th:field="*{email}" id="email" required>
         </div>
 
         <div class="form-group">
             <label for="phone">Контактний номер:</label>
-            <input type="text" th:field="*{}" id="phone" required>
-            <div class="error-container" th:if="${}" th:errors="*{}"></div>
+            <input type="text" th:field="*{phone}" id="phone" required>
         </div>
 
         <button type="submit">Зареєструвати</button>
