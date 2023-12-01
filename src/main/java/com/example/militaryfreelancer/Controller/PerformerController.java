@@ -2,9 +2,11 @@ package com.example.militaryfreelancer.Controller;
 
 import com.example.militaryfreelancer.DAO.PerformerDAO;
 import com.example.militaryfreelancer.Models.Performer.Performer;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +35,12 @@ public class PerformerController {
         return "/performer/new";
     }
 
-    @PostMapping
-    public String create(@ModelAttribute Performer performer){
+    @PostMapping()
+    public String create(@ModelAttribute @Valid Performer performer,
+                         BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "performer/new";
+        }
         performerDAO.save(performer);
         return "redirect:/performer";
     }

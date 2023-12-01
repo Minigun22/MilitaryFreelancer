@@ -1,16 +1,26 @@
 package com.example.militaryfreelancer.Models.Performer;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Getter
 @Setter
 public class Performer {
     private int id;
+
+    @NotEmpty(message = "Це поле не може бути порожнім")
+    @Size(min = 2, max = 15, message="Довжина має бути від 2 до 15 символів")
     private String name;
+    @NotEmpty(message = "Це поле не може бути порожнім")
+    @Size(min = 2, max = 15, message="Довжина має бути від 2 до 15 символів")
     private String surname;
+    @Email(message = "Неправильний формат електронної пошти")
     private String email;
+    @Pattern(regexp="(^$|[0-9]{10})", message = "Неправильно вказаний номер телефону")
     private String phone;
 
     public Performer(){
