@@ -6,5 +6,9 @@
 </head>
 <body>
 
+    <div th:each="vacancy : ${vacancies}">
+        <a  th:href="@{/vacancy/{id}(id=${vacancy.getId()})}" th:text="${vacancy.toString()}">user</a>
+    </div>
+
 </body>
 </html>

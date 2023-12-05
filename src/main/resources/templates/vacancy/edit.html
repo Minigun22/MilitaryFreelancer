@@ -2,8 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacancy creating</title>
+    <title>Update person</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,25 +78,23 @@
     </style>
 </head>
 <body>
+
 <div class="registration-form">
     <h2>Створення вакансії</h2>
     <form th:method="POST"  th:action="@{/vacancy}" th:object="${vacancies}">
         <div class="form-group">
             <label for="vacancyName">Назва вакансії:</label>
             <input type="text" th:field="*{vacancyName}" id="vacancyName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{vacancyName}"></div>
         </div>
 
         <div class="form-group">
             <label for="unitName">Группа:</label>
             <input type="text" th:field="*{unitName}" id="unitName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{unitName}"></div>
         </div>
 
         <div class="form-group">
             <label for="personName">Замовник:</label>
             <input type="text" th:field="*{personName}" id="personName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}"></div>
         </div>
 
         <div class="form-group">
@@ -111,5 +108,6 @@
         <button type="submit">Зареєструвати</button>
     </form>
 </div>
+
 </body>
 </html>

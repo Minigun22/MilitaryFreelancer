@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class TemporaryVacancyDAO {
+public class    TemporaryVacancyDAO {
 
     private static int VACANCY_COUNT;
     private final List<Vacancy> vacancyList;
@@ -16,7 +16,7 @@ public class TemporaryVacancyDAO {
         vacancyList = new ArrayList<>();
     }
 
-    public List<Vacancy> getPerformerList(){
+    public List<Vacancy> getVacancyList(){
         return vacancyList;
     }
 
@@ -34,8 +34,12 @@ public class TemporaryVacancyDAO {
     }
 
     public void save(Vacancy vacancy){
+        vacancy.setId(++VACANCY_COUNT);
         vacancyList.add(vacancy);
     }
 
+    public Vacancy show(int id){
+        return vacancyList.get(id);
+    }
 
 }
