@@ -1,7 +1,8 @@
 package com.example.militaryfreelancer.Controller;
 
-import com.example.militaryfreelancer.DAO.CustomerDAO;
+
 import com.example.militaryfreelancer.Models.Customer.Customer;
+import com.example.militaryfreelancer.Service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,14 +13,14 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-    private final CustomerDAO customerDAO;
+    private final CustomerService customerService;
     @Autowired
-    public CustomerController(CustomerDAO customerDAO){
-        this.customerDAO = customerDAO;
+    public CustomerController(CustomerService customerService){
+        this.customerService = customerService;
     }
     @GetMapping()
     public String getCustomers(Model model){
-        model.addAttribute("customers", customerDAO.getCustomerList());
+        model.addAttribute("customers", customerService.findAll());
         return "Customer/customers";
     }
     @GetMapping("/registration")
@@ -32,7 +33,7 @@ public class CustomerController {
         if(bindingResult.hasErrors()){
             return "Customer/registration";
         }
-        customerDAO.registerCustomer(customer);
+        customerService.save(customer);
         return "redirect:/customer";
     }
 }
