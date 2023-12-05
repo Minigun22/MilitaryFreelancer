@@ -16,5 +16,6 @@ public class Vacancy {
     private String email;
     private String phone;
 
+
     public Vacancy(){}
 }
