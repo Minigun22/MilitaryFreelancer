@@ -53,4 +53,11 @@ public class VacancyController {
         return "/vacancy/edit";
     }
 
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("vacancy") Vacancy vacancy, @PathVariable("id") int id){
+        temporaryVacancyDAO.update(id, vacancy);
+        return  "redirect:vacancy/vacancies";
+    }
+
+
 }
