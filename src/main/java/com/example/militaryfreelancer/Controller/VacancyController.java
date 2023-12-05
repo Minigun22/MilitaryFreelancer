@@ -54,10 +54,18 @@ public class VacancyController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("vacancy") Vacancy vacancy, @PathVariable("id") int id){
+    public String update(@ModelAttribute("vacancy") @Valid Vacancy vacancy, BindingResult bindingResult,
+                         @PathVariable("id") int id){
+        if (bindingResult.hasErrors()){
+            return "/vacancy/edit";
+        }
         temporaryVacancyDAO.update(id, vacancy);
         return  "redirect:vacancy/vacancies";
     }
 
-
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id){
+        temporaryVacancyDAO.delete(id);
+        return "redirect:/vacancy/vacancies";
+    }
 }

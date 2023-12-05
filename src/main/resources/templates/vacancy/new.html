@@ -85,19 +85,19 @@
         <div class="form-group">
             <label for="vacancyName">Назва вакансії:</label>
             <input type="text" th:field="*{vacancyName}" id="vacancyName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{vacancyName}"></div>
+            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{vacancyName}">Name error</div>
         </div>
 
         <div class="form-group">
-            <label for="unitName">Группа:</label>
+            <label for="unitName">Назва підлрозділу:</label>
             <input type="text" th:field="*{unitName}" id="unitName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{unitName}"></div>
+            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{unitName}">Name error</div>
         </div>
 
         <div class="form-group">
-            <label for="personName">Замовник:</label>
+            <label for="personName">І'мя контактної особи:</label>
             <input type="text" th:field="*{personName}" id="personName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}"></div>
+            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}">Name error</div>
         </div>
 
         <div class="form-group">
@@ -106,6 +106,18 @@
                 <option th:each="enumItem : ${T(com.example.militaryfreelancer.Models.Customer.Rank).values()}"
                         th:value="${enumItem}" th:text="${enumItem}"></option>
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Пошта контактної особи :</label>
+            <input type="text" th:field="*{email}" id="email" required>
+            <div class="error-container" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Номер телефону контактрої особи:</label>
+            <input type="text" th:field="*{phone}" id="phone" required>
+            <div class="error-container" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name error</div>
         </div>
 
         <button type="submit">Зареєструвати</button>

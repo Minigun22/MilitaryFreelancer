@@ -34,7 +34,7 @@ public class    TemporaryVacancyDAO {
     }
 
     public void save(Vacancy vacancy){
-        vacancy.setId(++VACANCY_COUNT);
+        vacancy.setId(VACANCY_COUNT++);
         vacancyList.add(vacancy);
     }
 
@@ -44,11 +44,10 @@ public class    TemporaryVacancyDAO {
 
     public void update(int id, Vacancy vacancy) {
         Vacancy vacancyWhoIsUpdated = show(id);
-        vacancyWhoIsUpdated.setVacancyName(vacancy.getVacancyName());
-        vacancyWhoIsUpdated.setUnitName(vacancy.getUnitName());
-        vacancyWhoIsUpdated.setPersonName(vacancy.getPersonName());
-        vacancyWhoIsUpdated.setRank(vacancy.getRank());
-        vacancyWhoIsUpdated.setPhone(vacancy.getPhone());
-        vacancyWhoIsUpdated.setEmail(vacancy.getEmail());
+        vacancyWhoIsUpdated = vacancy;
+    }
+
+    public void delete(int id){
+        vacancyList.removeIf(v -> v.getId() == id);
     }
 }

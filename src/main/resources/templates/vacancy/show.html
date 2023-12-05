@@ -8,5 +8,14 @@
 
 <p th:text="${vacancy.toString()}">VALUE</p>
 
+<br/>
+<hr/>
+
+<a th:href="@{/vacancy/{id}/edit(id=${vacancy.getId()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/vacancy/{id}(id=${vacancy.getId()})}">
+    <input type="submit" value="Delete">
+</form>
+
 </body>
 </html>
