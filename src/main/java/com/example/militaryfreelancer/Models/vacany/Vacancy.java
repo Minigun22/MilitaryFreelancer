@@ -5,10 +5,12 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Vacancy {
     private int id;
     @Size(min = 2, max = 15, message = "Довжина має бути від 2 до 15 символів")
@@ -18,13 +20,10 @@ public class Vacancy {
     @Size(min = 2, max = 15, message = "Довжина має бути від 2 до 15 символів")
     private String personName;
     private Rank rank;
-    @Email(message = "Неправильний формат електронної пошти")
+    @Email(message = "Невірно формат електронної пошти")
     private String email;
-    @Pattern(regexp="(^$|[0-9]{10})", message = "Неправильно вказаний номер телефону")
+    @Pattern(regexp="(^$|[0-9]{10})", message = "Невірно вказаний номер телефону")
     private String phone;
-
-
-    public Vacancy(){}
 
     public Vacancy(String vacancyName, String unitName, String personName, Rank rank, String email, String phone) {
         this.vacancyName = vacancyName;

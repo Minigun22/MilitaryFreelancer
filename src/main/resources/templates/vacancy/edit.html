@@ -2,12 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>User Registration</title>
-=======
-    <title>Vacancy creating</title>
->>>>>>> Vacancy
+    <title>Update person</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,7 +14,7 @@
             height: 100vh;
         }
 
-        .registration-form {
+        .edit-form {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -83,45 +78,23 @@
     </style>
 </head>
 <body>
-<div class="registration-form">
-    <h2>Створення вакансії</h2>
-<<<<<<< HEAD
-    <form th:method="POST"  th:action="@{/vacancy}" th:object="${vacancy}">
+
+<div class="edit-form">
+    <h2>Редагування вакансії</h2>
+    <form th:method="PATCH"  th:action="@{/vacancy/{id}(id=${vacancy.getId()})}" th:object="${vacancy}">
         <div class="form-group">
             <label for="vacancyName">Назва вакансії:</label>
             <input type="text" th:field="*{vacancyName}" id="vacancyName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{name}"></div>
-        </div>
-
-        <div class="form-group">
-            <label for="unitName">Группа:</label>
-            <input type="text" th:field="*{unitName}" id="unitName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{name}"></div>
-        </div>
-
-        <div class="form-group">
-            <label for="personName">Замовник:</label>
-            <input type="text" th:field="*{personName}" id="personName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{name}"></div>
-=======
-    <form th:method="POST"  th:action="@{/vacancy}" th:object="${vacancies}">
-        <div class="form-group">
-            <label for="vacancyName">Назва вакансії:</label>
-            <input type="text" th:field="*{vacancyName}" id="vacancyName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{vacancyName}">Name error</div>
         </div>
 
         <div class="form-group">
             <label for="unitName">Назва підлрозділу:</label>
             <input type="text" th:field="*{unitName}" id="unitName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{unitName}">Name error</div>
         </div>
 
         <div class="form-group">
             <label for="personName">І'мя контактної особи:</label>
             <input type="text" th:field="*{personName}" id="personName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}">Name error</div>
->>>>>>> Vacancy
         </div>
 
         <div class="form-group">
@@ -133,31 +106,18 @@
         </div>
 
         <div class="form-group">
-<<<<<<< HEAD
-            <label for="email">Електронна пошта:</label>
-            <input type="text" th:field="*{email}" id="email" required>
-            <div class="error-container" th:if="${#fields.hasErrors('email')}" th:errors="*{name}"></div>
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Контактний номер:</label>
-            <input type="text" th:field="*{phone}" id="phone" required>
-            <div class="error-container" th:if="${#fields.hasErrors('phone')}" th:errors="*{name}"></div>
-=======
             <label for="email">Пошта контактної особи :</label>
             <input type="text" th:field="*{email}" id="email" required>
-            <div class="error-container" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>
         </div>
 
         <div class="form-group">
             <label for="phone">Номер телефону контактрої особи:</label>
             <input type="text" th:field="*{phone}" id="phone" required>
-            <div class="error-container" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name error</div>
->>>>>>> Vacancy
         </div>
 
-        <button type="submit">Зареєструвати</button>
+        <button type="submit">Редагування</button>
     </form>
 </div>
+
 </body>
 </html>
