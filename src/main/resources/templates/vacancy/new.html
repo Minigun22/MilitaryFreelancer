@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>User Registration</title>
-=======
-    <title>Vacancy creating</title>
->>>>>>> Vacancy
+    <title>Create vacancy</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,7 +15,7 @@
             height: 100vh;
         }
 
-        .registration-form {
+        .create-form {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -36,18 +32,9 @@
             display: block;
             font-weight: bold;
             margin-bottom: 5px;
-            text-align: left;
         }
 
         input {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        select {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
@@ -63,15 +50,6 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
         .error-container {
             background-color: #f8d7da;
             color: #721c24;
@@ -80,83 +58,47 @@
             border-radius: 5px;
             margin: 20px 0;
         }
+        label {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
-<div class="registration-form">
-    <h2>Створення вакансії</h2>
-<<<<<<< HEAD
-    <form th:method="POST"  th:action="@{/vacancy}" th:object="${vacancy}">
-        <div class="form-group">
-            <label for="vacancyName">Назва вакансії:</label>
-            <input type="text" th:field="*{vacancyName}" id="vacancyName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{name}"></div>
-        </div>
-
-        <div class="form-group">
-            <label for="unitName">Группа:</label>
-            <input type="text" th:field="*{unitName}" id="unitName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{name}"></div>
-        </div>
-
-        <div class="form-group">
-            <label for="personName">Замовник:</label>
-            <input type="text" th:field="*{personName}" id="personName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{name}"></div>
-=======
+<div class="create-form">
+    <h2>Реєстрація</h2>
     <form th:method="POST"  th:action="@{/vacancy}" th:object="${vacancies}">
         <div class="form-group">
             <label for="vacancyName">Назва вакансії:</label>
             <input type="text" th:field="*{vacancyName}" id="vacancyName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{vacancyName}">Name error</div>
+            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{vacancyName}"></div>
         </div>
 
         <div class="form-group">
-            <label for="unitName">Назва підлрозділу:</label>
+            <label for="unitName">Назва підрозділу:</label>
             <input type="text" th:field="*{unitName}" id="unitName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{unitName}">Name error</div>
+            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{unitName}"></div>
         </div>
+
 
         <div class="form-group">
             <label for="personName">І'мя контактної особи:</label>
             <input type="text" th:field="*{personName}" id="personName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}">Name error</div>
->>>>>>> Vacancy
+            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}"></div>
         </div>
 
         <div class="form-group">
-            <label for="rank">Звання:</label>
-            <select th:field="*{rank}" id="rank" required>
-                <option th:each="enumItem : ${T(com.example.militaryfreelancer.Models.Customer.Rank).values()}"
-                        th:value="${enumItem}" th:text="${enumItem}"></option>
-            </select>
-        </div>
-
-        <div class="form-group">
-<<<<<<< HEAD
-            <label for="email">Електронна пошта:</label>
+            <label for="email">Електронна пошта контактної особи:</label>
             <input type="text" th:field="*{email}" id="email" required>
-            <div class="error-container" th:if="${#fields.hasErrors('email')}" th:errors="*{name}"></div>
+            <div class="error-container" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
         </div>
 
         <div class="form-group">
-            <label for="phone">Контактний номер:</label>
+            <label for="phone">Номер телефону контактної особи:</label>
             <input type="text" th:field="*{phone}" id="phone" required>
-            <div class="error-container" th:if="${#fields.hasErrors('phone')}" th:errors="*{name}"></div>
-=======
-            <label for="email">Пошта контактної особи :</label>
-            <input type="text" th:field="*{email}" id="email" required>
-            <div class="error-container" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>
+            <div class="error-container" th:if="${#fields.hasErrors('phone')}" th:errors="*{email}"></div>
         </div>
 
-        <div class="form-group">
-            <label for="phone">Номер телефону контактрої особи:</label>
-            <input type="text" th:field="*{phone}" id="phone" required>
-            <div class="error-container" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name error</div>
->>>>>>> Vacancy
-        </div>
-
-        <button type="submit">Зареєструвати</button>
+        <button type="submit">Створити</button>
     </form>
 </div>
 </body>

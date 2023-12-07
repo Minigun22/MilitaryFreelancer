@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class    TemporaryVacancyDAO {
+public class TemporaryVacancyDAO {
 
     private static int VACANCY_COUNT;
     private final List<Vacancy> vacancyList;
