@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<<html lang="en" xmlns:th="http://thymeleaf.org">
+<
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Show customer account</title>
 </head>
 <body>
-<a th:href="@{/customers/{id}/vacancies/new(id=${customer.getId()})}" >НОВА ВАКАНСІЯ</a>
-<form th:method="GET"  >
-    <input type="submit" value="+">
-</form>
-
+<h2 th:text="${customer.getName + customer.getSurname}"></h2>
+<h3 th:text="${customer.getId()}"></h3>
+<a th:href="@{/customers/{id}/vacancies/new(id=${customer.getId()})}">НОВА ВАКАНСІЯ</a>
+<p>Ваші ваканції:</p>
+<div th:each="vacancy : ${customer.getVacancies()}">
+    <a th:href="@{/customers/{customer_id}/vacancies/{vacancy_id}(customer_id=${customer.getId()}, vacancy_id=${vacancy.getId})}"
+       th:text="${vacancy.toString()}">vacancy</a>
+</div>
 </body>
 </html>

@@ -29,47 +29,57 @@ public class CustomerController {
     }
 
     @GetMapping()
-    public String getCustomers(Model model){
+    public String getCustomers(Model model) {
         model.addAttribute("customers", customerService.findAll());
         return "Customer/customers";
     }
+
     @GetMapping("/new")
-    public String getCreateCustomerForm(@ModelAttribute("customer") Customer customer){
+    public String getCreateCustomerForm(@ModelAttribute("customer") Customer customer) {
         return "Customer/new";
     }
+
     @PostMapping()
     public String registerCustomer(@ModelAttribute("customer") @Valid Customer customer,
-                                   BindingResult bindingResult){
+                                   BindingResult bindingResult) {
         customerValidator.validate(customer, bindingResult);
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "Customer/new";
         }
         customerService.save(customer);
         return "redirect:/customers";
     }
+
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") long id,Model model) {
+    public String show(@PathVariable("id") long id, Model model) {
         model.addAttribute("customer", customerService.findById(id));
         return "Customer/show";
     }
 
     @GetMapping("/{id}/vacancies/new")
-    public String newVacancy(@PathVariable("id") long id,Model model){
+    public String newVacancy(@PathVariable("id") long id, Model model) {
         model.addAttribute("vacancy", new Vacancy());
-        model.addAttribute("id",id);
+        model.addAttribute("id", id);
         return "Customer/vacancy/new";
     }
 
     @PostMapping("/{id}/vacancies/new")
     public String create(@PathVariable("id") long id, @ModelAttribute @Valid Vacancy vacancy,
-                         BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "Customer/vacancy/new";
         }
         vacancy.setCustomer(customerService.findById(id));
         vacancyService.save(vacancy);
         return "redirect:/customers/{id}";
+    }
+
+    @GetMapping("{customer_id}/vacancies/{vacancy_id}")
+    public String showVacancy(@PathVariable("customer_id") long customer_id,
+                              @PathVariable("vacancy_id") long vacancy_id, Model model) {
+        model.addAttribute("vacancy",vacancyService.findById(vacancy_id));
+        return "Customer/vacancy/show";
     }
 
 }
