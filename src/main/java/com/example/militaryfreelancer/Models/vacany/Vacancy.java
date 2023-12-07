@@ -18,7 +18,7 @@ import lombok.Setter;
 public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column(name ="name")
     @Size(min = 2, max = 15, message = "Довжина має бути від 2 до 15 символів")
     private String vacancyName;
