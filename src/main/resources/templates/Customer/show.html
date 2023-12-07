@@ -5,8 +5,8 @@
     <title>Show customer account</title>
 </head>
 <body>
-
-<form th:method="GET" th:action="@{vacancy/new}" th:object="${id_customer}">
+<a th:href="@{/customers/{id}/vacancies/new(id=${customer.getId()})}" >НОВА ВАКАНСІЯ</a>
+<form th:method="GET"  >
     <input type="submit" value="+">
 </form>
 

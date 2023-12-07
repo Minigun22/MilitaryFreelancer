@@ -16,7 +16,7 @@ import lombok.Setter;
 public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @Column(name ="name")
     @Size(min = 2, max = 15, message = "Довжина має бути від 2 до 15 символів")
     private String vacancyName;
@@ -27,14 +27,12 @@ public class Vacancy {
     private String description;
     @Column(name = "performer_rank")
     @Enumerated(EnumType.STRING)
-    @Size(min = 2, max = 15, message = "Довжина має бути від 2 до 15 символів")
     private Rank rank;
     @ManyToOne
     @JoinColumn(name="customer_id", referencedColumnName = "id")
     private Customer customer;
 
-    public Vacancy(long id, String vacancyName, String unitName, String description, Rank rank) {
-        this.id = id;
+    public Vacancy(String vacancyName, String unitName, String description, Rank rank) {
         this.vacancyName = vacancyName;
         this.unitName = unitName;
         this.description = description;

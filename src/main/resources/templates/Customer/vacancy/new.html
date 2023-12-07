@@ -66,7 +66,7 @@
 <body>
 <div class="create-form">
     <h2>Реєстрація</h2>
-    <form th:method="POST"  th:action="@{/vacancy}" th:object="${vacancies}">
+    <form th:method="POST"  th:action="@{/customers/{id}/vacancies/new(id=${id})}" th:object="${vacancy}">
         <div class="form-group">
             <label for="vacancyName">Назва вакансії:</label>
             <input type="text" th:field="*{vacancyName}" id="vacancyName" required>
@@ -81,21 +81,16 @@
 
 
         <div class="form-group">
-            <label for="personName">І'мя контактної особи:</label>
-            <input type="text" th:field="*{personName}" id="personName" required>
-            <div class="error-container" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}"></div>
+            <label for="description">Опис:</label>
+            <input type="text" th:field="*{description}" id="description" required>
+            <div class="error-container" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
         </div>
 
         <div class="form-group">
-            <label for="email">Електронна пошта контактної особи:</label>
-            <input type="text" th:field="*{email}" id="email" required>
-            <div class="error-container" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Номер телефону контактної особи:</label>
-            <input type="text" th:field="*{phone}" id="phone" required>
-            <div class="error-container" th:if="${#fields.hasErrors('phone')}" th:errors="*{email}"></div>
+            <label for="rank">Звання:</label>
+            <select id="rank" th:field="*{rank}">
+                <option th:value="SOLDIER" th:text="SOLDIER"></option>
+            </select>
         </div>
 
         <button type="submit">Створити</button>
