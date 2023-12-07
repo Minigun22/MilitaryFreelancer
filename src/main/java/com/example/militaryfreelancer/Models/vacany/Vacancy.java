@@ -3,8 +3,6 @@ package com.example.militaryfreelancer.Models.vacany;
 import com.example.militaryfreelancer.Models.Customer.Customer;
 import com.example.militaryfreelancer.Models.Customer.Rank;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,19 +33,16 @@ public class Vacancy {
     @JoinColumn(name="customer_id", referencedColumnName = "id")
     private Customer customer;
 
-    public Vacancy(String vacancyName, String unitName, String personName, Rank rank, String email, String phone) {
+    public Vacancy(long id, String vacancyName, String unitName, String description, Rank rank) {
+        this.id = id;
         this.vacancyName = vacancyName;
         this.unitName = unitName;
+        this.description = description;
         this.rank = rank;
     }
 
     @Override
     public String toString() {
-        return "Vacancy{" +
-                "id=" + id +
-                ", vacancyName='" + vacancyName + '\'' +
-                ", unitName='" + unitName + '\'' +
-                ", rank=" + rank +
-                '}';
+        return id + " | " + vacancyName + " | " + unitName + " | " + rank;
     }
 }

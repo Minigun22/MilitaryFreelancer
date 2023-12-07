@@ -9,6 +9,8 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.format.annotation.NumberFormat;
 
 import java.util.List;
@@ -37,6 +39,7 @@ public class Customer {
     @Pattern(regexp="(^$|[0-9]{10})", message = "Неправильно вказаний номер телефону")
     private String phone;
     @OneToMany(mappedBy = "customer")
+    @Cascade(CascadeType.ALL)
     private List<Vacancy> vacancies;
 
     public Customer() {
