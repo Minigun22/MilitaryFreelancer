@@ -36,4 +36,9 @@ public class CustomerController {
         customerService.save(customer);
         return "redirect:/customer";
     }
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") long id,Model model) {
+        model.addAttribute("customer", customerService.findById(id));
+        return "Customer/show";
+    }
 }
