@@ -1,6 +1,8 @@
 package com.example.militaryfreelancer.Models.vacany;
 
+import com.example.militaryfreelancer.Models.Customer.Customer;
 import com.example.militaryfreelancer.Models.Customer.Rank;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -11,27 +13,32 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
+@Table(name = "Vacancy")
 public class Vacancy {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name ="name")
     @Size(min = 2, max = 15, message = "Довжина має бути від 2 до 15 символів")
     private String vacancyName;
+    @Column(name ="unit_name")
     @Size(min = 2, max = 15, message = "Довжина має бути від 2 до 15 символів")
     private String unitName;
+    @Column(name = "description")
+    private String description;
+    @Column(name = "performer_rank")
+    @Enumerated(EnumType.STRING)
     @Size(min = 2, max = 15, message = "Довжина має бути від 2 до 15 символів")
-    private String personName;
     private Rank rank;
-    @Email(message = "Невірно формат електронної пошти")
-    private String email;
-    @Pattern(regexp="(^$|[0-9]{10})", message = "Невірно вказаний номер телефону")
-    private String phone;
+    @ManyToOne
+    @JoinColumn(name="customer_id", referencedColumnName = "id")
+    private Customer customer;
 
     public Vacancy(String vacancyName, String unitName, String personName, Rank rank, String email, String phone) {
         this.vacancyName = vacancyName;
         this.unitName = unitName;
-        this.personName = personName;
         this.rank = rank;
-        this.email = email;
-        this.phone = phone;
     }
 
     @Override
@@ -40,10 +47,7 @@ public class Vacancy {
                 "id=" + id +
                 ", vacancyName='" + vacancyName + '\'' +
                 ", unitName='" + unitName + '\'' +
-                ", personName='" + personName + '\'' +
                 ", rank=" + rank +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
                 '}';
     }
 }

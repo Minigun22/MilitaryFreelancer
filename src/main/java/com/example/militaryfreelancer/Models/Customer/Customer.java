@@ -1,5 +1,6 @@
 package com.example.militaryfreelancer.Models.Customer;
 
+import com.example.militaryfreelancer.Models.vacany.Vacancy;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -35,6 +36,8 @@ public class Customer {
     @Column(name="phone")
     @Pattern(regexp="(^$|[0-9]{10})", message = "Неправильно вказаний номер телефону")
     private String phone;
+    @OneToMany(mappedBy = "customer")
+    private List<Vacancy> vacancies;
 
     public Customer() {
 
