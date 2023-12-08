@@ -42,4 +42,8 @@ public class VacancyService {
         }
         vacancyRepository.save(newVacancy);
     }
+
+    public void delete(long id){
+        vacancyRepository.delete(findById(id));
+    }
 }

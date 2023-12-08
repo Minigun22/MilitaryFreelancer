@@ -21,19 +21,11 @@
 //
 //
 //
-//    @GetMapping("/{id}")
-//    public String show(@PathVariable("id") int id, Model model){
-//        model.addAttribute("vacancy", temporaryVacancyDAO.show(id));
-//        return "/vacancy/show";
-//    }
 //
 //
 //
 //
 //
-//    @DeleteMapping("/{id}")
-//    public String delete(@PathVariable("id") int id){
-//        temporaryVacancyDAO.delete(id);
-//        return "redirect:/vacancy/vacancies";
-//    }
+//
+
 //}

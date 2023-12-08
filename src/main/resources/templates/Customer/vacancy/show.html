@@ -11,10 +11,11 @@
 <br/>
 <hr/>
 
-<a th:href="@{/customers/{customer_id}/vacancies/{vacancy_id}/edit(customer_id=${vacancy.getCustomer().getId()}, vacancy_id=${vacancy.getId})}">Edit</a>
+<a th:href="@{/customers/{customer_id}/vacancies/{vacancy_id}/edit(customer_id=${vacancy.getCustomer().getId()}, vacancy_id=${vacancy.getId})}">
+    <button type="button">РЕДАГУВАТИ</button></a>
 
-<form th:method="DELETE" th:action="@{/vacancy/{id}(id=${vacancy.getId()})}">
-    <input type="submit" value="Delete">
+<form th:method="DELETE" th:action="@{/customers/{customer_id}/vacancies/{vacancy_id}(customer_id=${vacancy.getCustomer().getId()}, vacancy_id=${vacancy.getId})}">
+    <input type="submit" value="ВИДАЛИТИ">
 </form>
 
 </body>

@@ -98,4 +98,10 @@ public class CustomerController {
         vacancyService.update(vacancy_id, vacancy);
         return "redirect:/customers/{customer_id}";
     }
+
+    @DeleteMapping("/{customer_id}/vacancies/{vacancy_id}")
+    public String delete(@PathVariable("customer_id") long customer_id, @PathVariable("vacancy_id") long vacancy_id) {
+        vacancyService.delete(vacancy_id);
+        return "redirect:/customers/{customer_id}";
+    }
 }
