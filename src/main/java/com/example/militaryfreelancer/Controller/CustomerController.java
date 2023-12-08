@@ -43,7 +43,6 @@ public class CustomerController {
     public String registerCustomer(@ModelAttribute("customer") @Valid Customer customer,
                                    BindingResult bindingResult) {
         customerValidator.validate(customer, bindingResult);
-
         if (bindingResult.hasErrors()) {
             return "Customer/new";
         }
@@ -75,11 +74,28 @@ public class CustomerController {
         return "redirect:/customers/{id}";
     }
 
-    @GetMapping("{customer_id}/vacancies/{vacancy_id}")
+    @GetMapping("/{customer_id}/vacancies/{vacancy_id}")
     public String showVacancy(@PathVariable("customer_id") long customer_id,
                               @PathVariable("vacancy_id") long vacancy_id, Model model) {
-        model.addAttribute("vacancy",vacancyService.findById(vacancy_id));
+        model.addAttribute("vacancy", vacancyService.findById(vacancy_id));
         return "Customer/vacancy/show";
     }
 
+    @GetMapping("/{customer_id}/vacancies/{vacancy_id}/edit")
+    public String edit(Model model, @PathVariable("vacancy_id") long vacancy_id, @PathVariable("customer_id") long customer_id) {
+        model.addAttribute("vacancy", vacancyService.findById(vacancy_id));
+        model.addAttribute("customer_id", customer_id);
+        return "Customer/vacancy/edit";
+    }
+
+    @PatchMapping("/{customer_id}/vacancies/{vacancy_id}/edit")
+    public String update(@ModelAttribute("vacancy") @Valid Vacancy vacancy, BindingResult bindingResult,
+                         @PathVariable("customer_id") long customer_id, @PathVariable("vacancy_id") long vacancy_id) {
+        if (bindingResult.hasErrors()) {
+            return "Customer/vacancy/edit";
+        }
+        vacancy.setCustomer(customerService.findById(customer_id));
+        vacancyService.update(vacancy_id, vacancy);
+        return "redirect:/customers/{customer_id}";
+    }
 }

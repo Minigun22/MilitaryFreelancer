@@ -81,38 +81,33 @@
 
 <div class="edit-form">
     <h2>Редагування вакансії</h2>
-    <form th:method="PATCH"  th:action="@{/vacancy/{id}(id=${vacancy.getId()})}" th:object="${vacancy}">
+    <form th:method="PATCH"
+
+          th:object="${vacancy}">
         <div class="form-group">
             <label for="vacancyName">Назва вакансії:</label>
             <input type="text" th:field="*{vacancyName}" id="vacancyName" required>
+            <div class="error-container" th:if="${#fields.hasErrors('vacancyName')}" th:errors="*{vacancyName}"></div>
         </div>
 
         <div class="form-group">
-            <label for="unitName">Назва підлрозділу:</label>
+            <label for="unitName">Назва підрозділу:</label>
             <input type="text" th:field="*{unitName}" id="unitName" required>
+            <div class="error-container" th:if="${#fields.hasErrors('unitName')}" th:errors="*{unitName}"></div>
         </div>
 
+
         <div class="form-group">
-            <label for="personName">І'мя контактної особи:</label>
-            <input type="text" th:field="*{personName}" id="personName" required>
+            <label for="description">Опис:</label>
+            <input type="text" th:field="*{description}" id="description" required>
+            <div class="error-container" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
         </div>
 
         <div class="form-group">
             <label for="rank">Звання:</label>
-            <select th:field="*{rank}" id="rank" required>
-                <option th:each="enumItem : ${T(com.example.militaryfreelancer.Models.Customer.Rank).values()}"
-                        th:value="${enumItem}" th:text="${enumItem}"></option>
+            <select id="rank" th:field="*{rank}">
+                <option th:value="SOLDIER" th:text="SOLDIER"></option>
             </select>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Пошта контактної особи :</label>
-            <input type="text" th:field="*{email}" id="email" required>
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Номер телефону контактрої особи:</label>
-            <input type="text" th:field="*{phone}" id="phone" required>
         </div>
 
         <button type="submit">Редагування</button>

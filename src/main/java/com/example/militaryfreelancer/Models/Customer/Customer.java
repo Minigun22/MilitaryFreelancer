@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.springframework.format.annotation.NumberFormat;
 
 import java.util.List;
 
@@ -55,11 +54,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", phone=" + phone;
+        return id + " | " + name + ' ' + surname + " | " + phone + " | " + email;
     }
 }

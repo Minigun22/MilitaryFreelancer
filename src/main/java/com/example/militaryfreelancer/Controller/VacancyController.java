@@ -29,21 +29,7 @@
 //
 //
 //
-//    @GetMapping("/{id}/edit")
-//    public String edit(Model model, @PathVariable("id") int id){
-//        model.addAttribute("vacancy", temporaryVacancyDAO.show(id));
-//        return "/vacancy/edit";
-//    }
 //
-//    @PatchMapping("/{id}")
-//    public String update(@ModelAttribute("vacancy") @Valid Vacancy vacancy, BindingResult bindingResult,
-//                         @PathVariable("id") int id){
-//        if (bindingResult.hasErrors()){
-//            return "/vacancy/edit";
-//        }
-//        temporaryVacancyDAO.update(id, vacancy);
-//        return  "redirect:vacancy/vacancies";
-//    }
 //
 //    @DeleteMapping("/{id}")
 //    public String delete(@PathVariable("id") int id){

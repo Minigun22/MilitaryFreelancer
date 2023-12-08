@@ -31,4 +31,15 @@ public class VacancyService {
     public Vacancy findById(long id){
         return vacancyRepository.findById(id).orElse(null);
     }
+
+    public void update(long id,Vacancy updateVvacancy){
+        Vacancy newVacancy = vacancyRepository.findById(id).orElse(null);
+        if (newVacancy != null) {
+            newVacancy.setVacancyName(updateVvacancy.getVacancyName());
+            newVacancy.setUnitName(updateVvacancy.getUnitName());
+            newVacancy.setDescription(updateVvacancy.getDescription());
+            newVacancy.setRank(updateVvacancy.getRank());
+        }
+        vacancyRepository.save(newVacancy);
+    }
 }
