@@ -87,9 +87,9 @@
         </div>
 
         <div class="form-group">
-            <label for="rank">Звання:</label>
-            <select id="rank" th:field="*{rank}">
-                <option th:value="SOLDIER" th:text="SOLDIER"></option>
+            <select id="dropdown">
+            <option th:each="enumItem : ${T(com.example.militaryfreelancer.Models.Customer.Rank).values()}"
+                    th:value="${enumItem}" th:text="${enumItem}"></option>
             </select>
         </div>
 
